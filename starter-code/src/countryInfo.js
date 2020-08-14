@@ -27,22 +27,24 @@ const CountryInfo = props => {
                     <sup>2</sup>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Borders</td>
-                        <td>
-                            <ul>
-                                {country.borders.map(el => {
-                                    const borderCountry = countryData.find(country => {
-                                        return country.cca3 === el
-                                    })
-                                    return (
-                                        <li key={el}><Link to={`/${el}`}>{borderCountry.name.common}</Link></li>
-                                    )
-                                })}
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
+                    {country.borders.length > 0 &&
+                        <tr>
+                            <td>Borders</td>
+                            <td>
+                                <ul>
+                                    {country.borders.map(el => {
+                                        const borderCountry = countryData.find(country => {
+                                            return country.cca3 === el
+                                        })
+                                        return (
+                                            <li key={el}><Link to={`/${el}`}>{borderCountry.name.common}</Link></li>
+                                        )
+                                    })}
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                </tbody> 
             </table>
         </div>
 
